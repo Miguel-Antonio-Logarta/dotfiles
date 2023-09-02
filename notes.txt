@@ -1,0 +1,29 @@
+Installation
+Pywall - done
+i3wm - done
+vim - done
+polybar - done, need to configure still
+htop - done
+change font - done
+allacrity terminal - maybe later
+rofi - done
+Zsh -done
+powerline for zsh and vim
+urxvt
+lightDM for the login manager
+Configure suspend settings for i3
+
+Configuration
+- feh: set wallpaper - DONE
+- i3: add gaps - DONE
+- zsh: set as default shell - DONE
+
+Progress for today
+- Finished enabling the polybar. The polybar theme has been set and the position and spacing has been configured
+- Installed picom, a compositor that allows for transparency within apps
+- Rofi now runs when you do mod+d
+- Installed space vim. Still need to know how to use it
+- Installed fonts for polybar
+- Finished enabling touchpad "tap to click"
+- Finished Fixing brightness controls
+
