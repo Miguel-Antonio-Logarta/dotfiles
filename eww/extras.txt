@@ -1,0 +1,4 @@
+/* Color schemes */
+/* https://github.com/rebelot/kanagawa.nvim */
+/* Dark background (statuslines and floating windows) */
+/* Default background */

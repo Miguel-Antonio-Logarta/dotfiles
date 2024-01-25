@@ -245,6 +245,6 @@ exec_always ~/.config/polybar/currentbar/launch.sh
 
 # Start Rofi
 # bindsym $mod+d exec --no-startup-id rofi -show run -theme ~/.local/share/rofi/themes/squared-nord.rasi -show-icons
-bindsym $mod+d exec --no-startup-id rofi -show run -theme ~/Desktop/dotfiles/personal-rofi.rasi -show-icons
+bindsym $mod+d exec --no-startup-id rofi -show run -theme ~/Desktop/dotfiles/rofi.rasi -show-icons
 # END USER CONFIG
 

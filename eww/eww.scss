@@ -1,0 +1,147 @@
+/* 
+    In your yuck file, elements are defined with 
+    defwindow and defwidget. Just copy the name after that keyword
+    to select it.
+    
+    Also refer to the GTK CSS styling documentation
+    https://docs.gtk.org/gtk3/css-overview.html
+    
+    There is also a GTK-Debugger if something
+    doesnt't work the right way. Just run
+    "./eww inspector"
+
+    To reload the config, use
+    "./eww reload"
+
+    FONTS AND ICONS
+    Make sure you have the following fonts installed:
+    * Fira Code Mono
+    * Material Design Icons
+    Install into a folder like /usr/share/fonts
+    Reload the cache using "fc-cache -f -v"
+    Kill eww and re-run
+    To insert icons, look up the code point on Google for the font,
+    then use gucharmap, select th font
+    view > select "By Unicode Block" and check "Show only glyphs from this font"
+    Then select "private use area" on the left, then navigate to the code point to select the text to copy
+*/
+@use "colors";
+
+* {
+    all: unset;
+}
+
+// @use "colors";
+
+/* Fonts */
+$MaterialIcons: "Material Icons";
+$mainFont: "Fira Mono Medium"; 
+
+/* Widgets and windows*/
+.bar {
+    background-color: colors.$sumiInk0;
+    color: colors.$fujiWhite;
+    padding: 0 16px;
+    font-size: 14px;
+}
+
+.launcher {
+    /* background-color: white; */
+    // background-color: $sumiInk1;
+    // margin: 12px 8px;
+}
+
+// .launcer:hover {
+//     cursor: pointer;
+// }
+
+.launcer-eventbox {
+    background-color: colors.$sumiInk0;
+}
+
+.launcer-eventbox:hover {
+    background-color: colors.$sumiInk1;
+}
+
+.workspaces {
+    // color: colors.$fujiGray;
+    background-color: colors.$sumiInk1;
+    margin: 0.6rem 0 0.6rem 0;
+    padding: 0 1rem;
+    border-radius: 8px;
+    font-family: $mainFont;
+}
+
+.active {
+    color: colors.$springGreen;
+    // font-weight: bold;
+    // background-color: colors.$fujiGray;
+}
+
+.occupied {
+    color: colors.$fujiWhite;
+}
+
+.unused {
+    color: colors.$fujiGray;
+}
+
+.music {
+    background-size: cover;
+    margin: 0.6rem 0 0.6rem 0;
+    padding: 0 1rem;
+    border-radius: 8px;
+    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url("./assets/IckyMettle.jpeg");
+    font-family: $mainFont;
+}
+
+.power-button {
+    margin: 0.6rem 0 0.6rem 0;
+    // padding: 0 1rem;
+    font-size: 22px;
+    color: colors.$samuraiRed;
+    font-family: "Material Icons";
+}
+
+.controls, .stats, .hotbar {
+    background-color: colors.$sumiInk1;
+    margin: 0.6rem 0 0.6rem 0;
+    padding: 0 1rem;
+    border-radius: 8px;
+    font-family: $mainFont;
+    // vertical-align: middle;
+}
+
+.controls .icon, .stats .icon {
+    margin-right: 0.6rem;
+}
+
+.time {
+    background-color: colors.$sumiInk1;
+    margin: 0.6rem 0 0.6rem 0;
+    padding: 0 1rem;
+    border-radius: 8px;
+    font-family: $mainFont;
+}
+
+.time-icon {
+    margin-right: 12px;
+}
+
+.volume-icon {
+    font-family: $MaterialIcons;
+    color: yellow;
+}
+
+.icon {
+    font-family: $MaterialIcons;
+    font-size: 1.2rem;
+}
+
+.powermenu {
+    padding: 0;
+    margin: 0;
+}
+.icon-text-group .icon {
+    margin-right: 0.4rem;
+}

@@ -1,0 +1,213 @@
+(defwidget greeter [?text name]
+  (box :orientation "horizontal"
+       :halign "center"
+    text
+    (button :onclick "notify-send 'Hello' 'Hello, ${name}'"
+      "Greet")))
+
+(defwidget icon [text className]
+    (box
+        :class "icon ${className}"
+        text
+    )
+)
+
+(defwidget labeledIcon []
+    (box 
+        :class "icon-text-group"
+        :space-evenly false
+        (children)
+    )
+)
+
+; TODO:
+; Fix the cursor when you hover over the logo
+; Add a rofi script that runs when you click on it
+(defwidget launcher []
+	(button :class "launcher"
+		 :orientation "horizontal" 
+		 :halign "start"
+		 (eventbox 
+                :cursor "pointer"
+                :class "launcher-eventbox"
+                :onclick "'Launcher' 'Launcher has been clicked'"
+                (image :path "assets/popLogo24.svg"
+                            ; :image-width 24
+                            ; :image-height 24
+                )
+		 )
+	)
+)
+
+; TODO:
+; Highlight current workspace you're on
+; Add separators between each number for some flair
+; Change the font
+; Maybe instead of numbers, it could be squares or balls
+(defwidget workspaces []
+    (box 
+        :class "workspaces"
+        :orientation "h"
+        :space-evenly true
+        :halign "start"
+        :spacing 16
+        (button :class "active" :onclick "wmctrl -s 0" 1)
+        (button :class "occupied" :onclick "wmctrl -s 1" 2)
+        (button :class "unused" :onclick "wmctrl -s 2" 3)
+        (button :class "unused" :onclick "wmctrl -s 3" 4)
+        (button :class "unused" :onclick "wmctrl -s 4" 5)
+        (button :class "unused" :onclick "wmctrl -s 5" 6)
+        (button :class "unused" :onclick "wmctrl -s 6" 7)
+        (button :class "unused" :onclick "wmctrl -s 7" 8)
+        (button :class "unused" :onclick "wmctrl -s 8" 9)
+    )
+)
+
+; Make it more dynamic
+; Rotating text?
+; When you hover over it, it should reveal a media player
+(defwidget music [?text]
+    (box
+        :class "music"
+        "${text}"
+    )
+)
+
+; When you hover over it, it reveals a calendar
+(defwidget time []
+    (box
+        :class "time"
+        :space-evenly "false"
+        (icon :text "" :className "time-icon")
+        "4:31 PM"
+    )
+)
+
+; CPU usage, storage, etc...
+(defwidget stats []
+    (box
+        :class "stats"
+        :space-evenly "false"
+        :spacing 16
+
+        (labeledIcon
+            (icon :text "" :className "CPU-icon")
+            "40% | 4.4 GB"
+        )
+
+        (labeledIcon
+            (icon :text "" :className "storage-icon")
+            "86.28 GB / 200 GB"   
+        )
+    )
+)
+
+; Contains volume, brightness, and wifi
+(defwidget controls []
+    (box
+        :class "controls"
+        :space-evenly false
+        ; "" ; volume
+        ; " 60%" ; brightness
+        ; "" ; wifi
+        ; " 75%" ; battery
+        :spacing 16
+        (labeledIcon
+            (icon :text "" :className "volume-icon")
+            "25%"
+        )
+
+        (labeledIcon
+            (icon :text "" :className "brightness-icon")
+            "100%"
+        )
+
+        (labeledIcon
+            (icon :text "" :className "battery-icon")
+            "75%"
+        )
+
+        (labeledIcon
+            (icon :text "" :className "wifi-icon")
+            "CBCI-4D89-2.4"
+        )
+
+    )
+)
+
+(defwidget powermenu []
+    (box
+        :class "powermenu"
+        (button 
+            :class "power-button" 
+            ""
+        )
+    )
+)
+
+(defwidget hotbar []
+    (box
+        :class "hotbar"
+        (labeledIcon
+            (icon :text "" :className "folder-icon")
+            "SFSU"
+        )
+    )
+)
+
+(defwidget left []
+    (box
+        :orientation "h"
+        :halign "start"
+        :spacing 16
+        :space-evenly false
+        (launcher)
+        (workspaces)
+        (hotbar)
+        (music :text "Now playing Wrong - Archers of Loaf")
+    )
+)
+
+(defwidget middle []
+    (box
+        :orientation "h"
+        :halign "center"
+        :space-evenly "false"
+    )
+)
+
+(defwidget right []
+    (box
+        :orientation "h"
+        :halign "end"
+        :space-evenly false
+        :spacing 16
+        (stats)
+        (controls)
+        (time)
+        (powermenu)
+    )
+)
+
+(defwidget bar []
+    (box 
+        :orientation "h"
+        (left)
+        ; (middle)
+        (right)
+    )
+)
+
+(defwindow bar
+	:monitor 0
+	:geometry (geometry :x "0"
+						:y "0"
+						:width "90%"
+						:height "48px"
+						:anchor "top left")
+	:stacking "fg"
+	:reserve (struts :distance "10px" :side "top") ; How much space should the window manager reserve for the window
+	:windowtype "dock" ; can be normal | dock | toolbar | dialog | desktop
+	:wm-ignore false
+	(bar)
+)
