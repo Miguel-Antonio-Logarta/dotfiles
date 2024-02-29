@@ -1,0 +1,43 @@
+; TODO:
+; The script should just output json
+; Use EWW's json "for syntax" to render out a list of widgets
+
+(deflisten workspaces_script 
+    :initial "Initializing" 
+    "~/.config/eww/scripts/workspaces.sh"
+)
+
+(deflisten mode_script 
+    :initial "Initializing"
+    "~/.config/eww/scripts/mode.sh"
+)
+
+; Maybe for CSS, put a right round border while the workspace has no round borders on the right
+; When content is not there, there still is a border
+(defwidget modeIndicator []
+    (box 
+        :class "mode-indicator-container" 
+        (revealer
+            :transition "slideright"
+            :reveal "${mode_script == 'resize'}"
+            :duration "200ms"
+            (box
+                :class "mode-indicator"
+                "RESIZE MODE"
+            )
+        )
+    )
+)
+
+; TODO: Mode indicator should be flush with the workspace, 
+; right now, it is a separate entity
+(defwidget workspaces []
+    (box 
+        :class "workspaces-container"
+        :space-evenly false
+        ; :spacing "${mode_script == 'resize' ? 16 : 0}"
+        (literal :content "${workspaces_script}")
+        ; "${mode}"
+        (modeIndicator)
+    )
+)

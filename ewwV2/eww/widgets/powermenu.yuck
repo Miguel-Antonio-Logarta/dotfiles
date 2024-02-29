@@ -1,0 +1,14 @@
+(defvar powermenuCmd "~/Desktop/dotfiles/rofi/powermenu.sh")
+
+(defwidget powermenu []
+    (eventbox
+        :tooltip "Open Power Menu"
+        :cursor "pointer"
+        :class "powermenu-eventbox"
+        (button 
+            :class "power-button" 
+            :onclick powermenuCmd
+            ""
+        )
+    )
+)
