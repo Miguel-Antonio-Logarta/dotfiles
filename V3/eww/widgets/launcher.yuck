@@ -1,0 +1,19 @@
+(defvar launcherCmd "rofi -show run -theme ~/Desktop/dotfiles/rofi/launcher.rasi")
+
+; TODO:
+; Fix the cursor when you hover over the logo
+; Add a rofi script that runs when you click on it
+(defwidget launcher []
+    (eventbox
+        :tooltip "Open Launcher"
+        :cursor "pointer"
+        :class "launcher-eventbox"
+        (button :class "launcher"
+                :halign "start"
+                :onclick launcherCmd
+                (image 
+                    :path "assets/popLogo24.svg"
+                )
+        )
+    )
+)

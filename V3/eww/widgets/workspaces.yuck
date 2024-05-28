@@ -1,0 +1,47 @@
+; This variable got updated, but for something is is having trouble parsing it
+(deflisten workspaces_script
+    :initial "initiallllss"
+    "~/.config/eww/scripts/workspaces.py"
+)
+
+(defwidget mode_indicator []
+    (box 
+        :class "mode-indicator-container" 
+        (revealer
+            :transition "slideright"
+            :reveal {workspaces_script.mode == 'RESIZE'}
+            :duration "200ms"
+            (box
+                :class "mode-indicator"
+                "RESIZE MODE"
+            )
+        )
+    )
+)
+
+(defwidget workspaces []
+    (box 
+        :class "workspaces-container"
+        :space-evenly false
+        (box 
+            :class "workspaces" 
+            :vexpand "true" 
+            :orientation "h" 
+            :space-evenly true 
+            :halign "start" 
+            :spacing 16
+            (for workspace in "${workspaces_script.workspaces}"
+                (eventbox
+                    :cursor "pointer"
+                    (button 
+                        :class "${workspace.class}"
+                        :onclick "${workspace.i3_command}"
+                        "${workspace.workspace_number}"
+                    )
+                )
+                
+            )
+        )
+        (mode_indicator)
+    )
+)

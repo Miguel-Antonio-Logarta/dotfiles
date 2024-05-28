@@ -1,0 +1,138 @@
+(include "./widgets/workspaces.yuck")
+; (include "./widgets/workspacesV3.yuck")
+(include "./widgets/datetime.yuck")
+(include "./widgets/battery.yuck")
+(include "./widgets/brightness.yuck")
+(include "./widgets/wifi.yuck")
+(include "./widgets/volume.yuck")
+(include "./widgets/hotbar.yuck")
+(include "./widgets/powermenu.yuck")
+(include "./widgets/launcher.yuck")
+(include "./widgets/music.yuck")
+
+(defwidget iconShowcase []
+    (box
+        (label 
+            :class "icon-showcase"
+            :text "||")
+    )
+)
+
+(defwidget icon [text className]
+    (box
+        :class "icon ${className}"
+        text
+    )
+)
+
+(defwidget labeledIcon []
+    (box 
+        :class "icon-text-group"
+        :space-evenly false
+        (children)
+    )
+)
+
+; CPU usage, storage, etc...
+(defwidget stats []
+    (box
+        :class "stats"
+        :space-evenly "false"
+        :spacing 16
+
+        (labeledIcon
+            (icon :text "" :className "CPU-icon")
+            "40% | 4.4 GB / 8.0 GB"
+        )
+
+        (labeledIcon
+            (icon :text "" :className "storage-icon")
+            "86.28 GB / 200 GB"   
+            ; The variables below get the total in bytes
+            ; "${EWW_DISK['/'].used} / ${EWW_DISK['/'].total}"   
+        )
+    )
+)
+
+; Contains volume, brightness, and wifi
+(defwidget controls []
+    (box
+        :class "controls"
+        :space-evenly false
+        :spacing 16
+        (volume :volume_mute "x" :volume_low "x" :volume_medium "x" :volume_high "x")
+        (brightness :low_icon "x" :medium_icon "x" :high_icon "x")
+        (battery :low_icon "x" :medium_icon "x" :high_icon "x" :full_icon "x")
+        (wifi :wifi_no_signal "x" :wifi_low "x" :wifi_medium "x" :wifi_high "x")
+
+    )
+)
+
+(defwidget left []
+    (box
+        :orientation "h"
+        :halign "start"
+        :spacing 16
+        :space-evenly false
+        (launcher)
+        (workspaces)
+        ;(workspacesJSON)
+        (hotbar)
+        ; (iconShowcase)
+        ; (music)
+    )
+)
+
+(defwidget middle []
+    (box
+        :orientation "h"
+        :halign "center"
+        :space-evenly "false"
+        :class "middle"
+        :hexpand true
+        ; (music :text "Now playing Wrong - Archers of Loaf")
+        ; (label :text "This is an example text")
+        ; (workspaces)
+    )
+)
+
+(defwidget right []
+    (box
+        :orientation "h"
+        :halign "end"
+        :space-evenly false
+        :spacing 16
+        ; (stats)
+        (controls)
+        (datetime)
+        (powermenu)
+    )
+)
+
+(defwidget bar []
+    (box 
+        :space-evenly false
+        :hexpand true
+        :orientation "h"
+        (left)
+        (middle)
+        (right)
+    )
+)
+
+; Currently there's a bug with wm-ignore thats causing high cpu usage. It is an issue with i3
+; trying to reposition the window.
+(defwindow bar
+	:monitor 0
+	:geometry (geometry :x "0"
+						:y "1032px"
+						; :width "1920px"
+						:width "100%"
+						:height "48px"
+						:anchor "top left")
+	:stacking "bg"
+	; :reserve (struts :distance "10px" :side "bottom") ; How much space should the window manager reserve for the window
+	:windowtype "dock" ; can be normal | dock | toolbar | dialog | desktop
+	:wm-ignore true ;wm-ignore false seems to cause the high cpu usage
+	(bar)
+)

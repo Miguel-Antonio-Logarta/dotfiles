@@ -1,0 +1,16 @@
+(deflisten batteryState 
+    :initial "initializing" 
+    "~/.config/eww/scripts/battery.sh"
+)
+
+(defwidget battery [low_icon medium_icon high_icon full_icon]
+    ; (labeledIcon
+    ;     (icon :text "" :className "battery-icon")
+    ;     "${EWW_BATTERY['BAT0']['capacity']}%"
+    ; )
+    (labeledIcon
+        (icon :text "${batteryState.icon}" :className "battery-icon")
+        ; "${batteryState.value}%${batteryState.status == 'charging' ? ' [CHARGING]' : ${batteryState.status == 'full' ? ' [FULL]' : ''}}"
+        "${batteryState.value}%${batteryState.status == 'charging' ? ' [CHARGING]' : batteryState.status == 'full' ? ' [FULL]' : ''}"
+    )
+)

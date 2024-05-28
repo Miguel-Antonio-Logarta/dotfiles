@@ -1,0 +1,11 @@
+(deflisten brightness
+    :initial "Initializing"
+    "~/.config/eww/scripts/brightness.sh"
+)
+
+(defwidget brightness []
+    (labeledIcon
+        (icon :text "${brightness.icon}" :className "brightness-icon")
+        "${brightness.value}%"
+    )
+)

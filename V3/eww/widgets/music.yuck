@@ -1,0 +1,12 @@
+; Make it more dynamic
+; Rotating text?
+; When you hover over it, it should reveal a media player
+
+; NOTE: It's actually difficult to get this to work with firefox. This should
+; only be used if you're trying to use spotify.
+(defwidget music []
+    (box
+        :class "music"
+        "Now playing Wrong - Archers of Loaf"
+    )
+)

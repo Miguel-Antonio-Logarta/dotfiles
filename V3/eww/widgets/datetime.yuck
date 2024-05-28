@@ -1,0 +1,34 @@
+; TODO: When you hover over it, it reveals a calendar
+(defvar revealDate false)
+
+(defwidget time []
+    "${formattime(EWW_TIME, '%I:%M %p')}"
+)
+
+(defwidget date []
+    (revealer
+        :transition "slideleft"
+        :reveal "${revealDate}"
+        :duration "500ms"
+        :class "date"
+        (box
+            "${formattime(EWW_TIME, '%B %e, %Y')} | "
+        )
+    )
+)
+
+(defwidget datetime []
+    (eventbox
+        :onhover "${EWW_CMD} update revealDate=true"
+        :onhoverlost "${EWW_CMD} update revealDate=false"
+        :cursor "pointer"
+        :tooltip "Open Calendar"
+        (box
+            :class "time"
+            :space-evenly "false"
+            (icon :text "" :className "time-icon")
+            (date)
+            (time)
+        )
+    )
+)
