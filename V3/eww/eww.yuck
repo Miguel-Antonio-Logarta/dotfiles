@@ -9,6 +9,7 @@
 (include "./widgets/powermenu.yuck")
 (include "./widgets/launcher.yuck")
 (include "./widgets/music.yuck")
+(include "./widgets/tray.yuck")
 
 (defwidget iconShowcase []
     (box
@@ -103,7 +104,8 @@
         :space-evenly false
         :spacing 16
         ; (stats)
-        (controls)
+        (tray)
+        ; (controls)
         (datetime)
         (powermenu)
     )

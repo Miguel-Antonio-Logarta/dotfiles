@@ -101,8 +101,8 @@ case ${chosen} in
 		run_cmd --reboot
         ;;
     $lock)
-		if [[ -x '/usr/bin/betterlockscreen' ]]; then
-			betterlockscreen -l
+		if [[ -x "/usr/local/bin/betterlockscreen" ]]; then
+			betterlockscreen -l dim 0.8
 		elif [[ -x '/usr/bin/i3lock' ]]; then
 			i3lock
 		fi

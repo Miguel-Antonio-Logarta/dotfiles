@@ -23,7 +23,7 @@ USE_BUTTONS=YES
 /*****----- Main Window -----*****/
 window {
     /* properties for window widget */
-    font: "Phosphor 10";
+    // font: "Phosphor 14";D
     transparency:                "real";
     location:                    center;
     anchor:                      center;

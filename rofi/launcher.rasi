@@ -93,15 +93,26 @@ mainbox {
     border-color:                @border-colour;
     background-color:            transparent;
     //children:                    [ "inputbar", "message", "listview", "mode-switcher" ];
-    children:                    [ "inputbar", "message", "listview" ];
+    // children:                    [ "title", "inputbar", "message", "listview" ];
+    children:                    [ "textbox-title", "inputbar", "message", "listview" ];
+}
+
+/*****----- Title -----*****/
+textbox-title {
+  expand: false;
+  content: "LAUNCHER";
+//   content: "LAUNCH COMMAND";
+  background-color: inherit;
+  text-color: @foreground-colour;
+  font: "JetBrains Mono Nerd Font Bold 19";
 }
 
 /*****----- Inputbar -----*****/
 inputbar {
     enabled:                     true;
-    spacing:                     10px;
+    spacing:                     16px;
     margin:                      0px;
-    padding:                     8px;
+    padding:                     8px 16px;
     border:                      0px solid;
     border-radius:               8px;
     border-color:                @border-colour;
@@ -190,7 +201,7 @@ element {
     enabled:                     true;
     spacing:                     8px;
     margin:                      0px;
-    padding:                     8px;
+    padding:                     8px 16px;
     border:                      0px solid;
     border-radius:               8px;
     border-color:                @border-colour;
