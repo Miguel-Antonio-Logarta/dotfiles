@@ -8,8 +8,9 @@ export ZSH="$HOME/.oh-my-zsh"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="agnoster"
-
+# ZSH_THEME="agnoster"
+ZSH_THEME="duellj"
+# ZSH_THEME="fino"
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
 # a theme from this variable instead of looking in $ZSH/themes/
@@ -81,7 +82,7 @@ source $ZSH/oh-my-zsh.sh
 # &   # Run the process in the background.
 # ( ) # Hide shell job control messages.
 # Not supported in the "fish" shell.
-(cat ~/.cache/wal/sequences &)
+#(cat ~/.cache/wal/sequences &)
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
@@ -106,8 +107,37 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
 alias sfsu="cd ~/Desktop/SFSU; ls"
 alias py="python3"
-alias zshconfig="vim ~/.zshrc"
-alias i3config="vim ~/.config/i3/config"
+alias zshconfig="lvim ~/.zshrc"
+alias i3config="lvim ~/.config/i3/config"
 alias desk="cd ~/Desktop"
+alias dots="cd ~/Desktop/dotfiles"
+#alias tor="/opt/tor-browser/start-tor-browser.desktop"
+alias tor="~/.local/share/applications/start-tor-browser.desktop"
+#alias getducta="wget -r -np -P '~/Desktop/SFSU/CSC215/downloads/ --user='sfsu' --password='student'"
+alias getducta="wget -P ~/Desktop/SFSU/CSC215/downloads/ -r -np --user=sfsu --password=student"
+#https://stackoverflow.com/questions/35895229/zshrc-alias-gets-executed-when-launching-a-new-terminal
+#alias cdf="cd $(find * type d | fzf)"
+alias rdunst="killall dunst ; dunst -config ~/Desktop/dotfiles/dunstrc ; notify-send 'foo'"
+path+=("$HOME/.local/bin")
+# Set default editor
+export EDITOR="lvim"
+
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/potatochipse/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/potatochipse/anaconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/potatochipse/anaconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/potatochipse/anaconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+

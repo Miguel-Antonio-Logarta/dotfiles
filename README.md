@@ -27,5 +27,5 @@ Welcome to my dotfiles. Here you will find a variety of configuration files that
 * **Rounded Borders**: xborder
 
 ## Screenshots
-![Screenshot 1](relative%20screenshots/showcase1.png?raw=true "Screenshot 1")
-![Screenshot 2](relative%20screenshots/showcase2.png?raw=true "Screenshot 2")
+![Screenshot 1](https://github.com/Miguel-Antonio-Logarta/dotfiles/blob/4c8f1eb86cae0dcbbfa6d026fbee12ec8bac945f/screenshots/showcase1.png)
+![Screenshot 2](https://github.com/Miguel-Antonio-Logarta/dotfiles/blob/4c8f1eb86cae0dcbbfa6d026fbee12ec8bac945f/screenshots/showcase2.png)

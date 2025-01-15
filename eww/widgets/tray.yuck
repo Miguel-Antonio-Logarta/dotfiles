@@ -1,0 +1,8 @@
+(defwidget tray []
+    (box
+        (label
+            :text "something"
+        )
+        (systray)
+    )
+)

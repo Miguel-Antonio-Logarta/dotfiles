@@ -35,20 +35,34 @@
 
 /* Fonts */
 $MaterialIcons: "Material Icons";
-$mainFont: "Fira Mono Medium"; 
+// $mainFont: "Fira Mono Medium";\
+$PhosphorIconsFilled: "Phosphor-Fill";
+$PhosphorIconsRegular: "Phosphor";
+$mainFont: "JetBrainsMono Nerd Font";
+// $mainFont: "Iosevka Nerd Font";
+
+.icon-showcase {
+    font-family: "Phosphor-Fill";
+    font-size: 16px;
+    color: colors.$green;
+}
 
 /* Widgets and windows*/
 .bar {
-    background-color: colors.$sumiInk0;
-    color: colors.$fujiWhite;
+    background-color: colors.$crust;
+    color: colors.$text;
     padding: 0 16px;
     font-size: 14px;
+    // border-top: 4px solid;
+    // border-color: colors.$mauve;
+    // border-color: rgba(203, 166, 247, 0.5);
 }
 
 .launcher {
     /* background-color: white; */
     // background-color: $sumiInk1;
     // margin: 12px 8px;
+    // background-color: white;
 }
 
 // .launcer:hover {
@@ -56,34 +70,87 @@ $mainFont: "Fira Mono Medium";
 // }
 
 .launcer-eventbox {
-    background-color: colors.$sumiInk0;
+    // background-color: colors.$sumiInk0;
 }
 
 .launcer-eventbox:hover {
-    background-color: colors.$sumiInk1;
+    // background-color: colors.$sumiInk1;
 }
 
-.workspaces {
-    // color: colors.$fujiGray;
-    background-color: colors.$sumiInk1;
+.workspaces-container {
+    background-color: colors.$base;
     margin: 0.6rem 0 0.6rem 0;
-    padding: 0 1rem;
+    padding: 0 0 0 1rem;
     border-radius: 8px;
+    // border-radius: 8px 0 0 8px;
     font-family: $mainFont;
 }
 
-.active {
-    color: colors.$springGreen;
-    // font-weight: bold;
+.workspaces {
+    color: colors.$text;
+    // background-color: colors.$sumiInk1;
+    // background-color: colors.$base;
+    // margin: 0.6rem 0 0.6rem 0;
+    // padding: 0 1rem;
+    // border-radius: 8px;
+    // font-family: $mainFont;
+    // height: 100%;
+    padding-right: 1rem;
+}
+
+.workspace-empty {
+    color: colors.$surface0;
+}
+
+.workspace-active {
+    color: colors.$green;
+    // color: colors.$springGreen;
+    font-weight: bold;
     // background-color: colors.$fujiGray;
 }
 
-.occupied {
-    color: colors.$fujiWhite;
+.workspace-occupied {
+    color: colors.$text;
 }
 
-.unused {
-    color: colors.$fujiGray;
+.workspace-urgent {
+    color: colors.$red;
+    font-weight: bold;
+}
+
+.mode-indicator-container {
+    // background-color: colors.$red;
+    // padding: 0 1rem;
+    // border-radius: 0 8px 8px 0;
+    // overflow: hidden;
+    // margin-left: 1rem;
+}
+
+.vertical-splitting-indicator-container {
+    // background-color: colors.$blue;
+    // padding: 0 1rem;
+    // border-radius: 0 8px 8px 0;
+}
+
+.mode-indicator {
+    background-color: colors.$red;
+    color: colors.$crust;
+    padding: 0 1rem;
+    border-radius: 0 8px 8px 0;
+    font-family: $mainFont;
+}
+
+.split-indicator, .split-indicator-rounded {
+    background-color: colors.$blue;
+    color: colors.$crust;
+    padding: 0 1rem;
+    font-family: $mainFont;
+    // font-family: $PhosphorIconsRegular;
+}
+
+.split-indicator-rounded {
+    border-radius: 0 8px 8px 0;
+    
 }
 
 .music {
@@ -96,41 +163,11 @@ $mainFont: "Fira Mono Medium";
 }
 
 .power-button {
-    margin: 0.6rem 0 0.6rem 0;
+    // margin: 0.6rem 0 0.6rem 0;
     // padding: 0 1rem;
     font-size: 22px;
-    color: colors.$samuraiRed;
+    color: colors.$red;
     font-family: "Material Icons";
-}
-
-.controls, .stats, .hotbar {
-    background-color: colors.$sumiInk1;
-    margin: 0.6rem 0 0.6rem 0;
-    padding: 0 1rem;
-    border-radius: 8px;
-    font-family: $mainFont;
-    // vertical-align: middle;
-}
-
-.controls .icon, .stats .icon {
-    margin-right: 0.6rem;
-}
-
-.time {
-    background-color: colors.$sumiInk1;
-    margin: 0.6rem 0 0.6rem 0;
-    padding: 0 1rem;
-    border-radius: 8px;
-    font-family: $mainFont;
-}
-
-.time-icon {
-    margin-right: 12px;
-}
-
-.volume-icon {
-    font-family: $MaterialIcons;
-    color: yellow;
 }
 
 .icon {
@@ -138,10 +175,96 @@ $mainFont: "Fira Mono Medium";
     font-size: 1.2rem;
 }
 
-.powermenu {
-    padding: 0;
-    margin: 0;
+.controls, .stats, .hotbar {
+    background-color: colors.$base;
+    margin: 0.6rem 0 0.6rem 0;
+    padding: 0 1rem;
+    border-radius: 8px;
+    font-family: $mainFont;
+    // vertical-align: middle;
 }
+
+.folder-icon {
+    color: colors.$mauve;
+}
+
+.controls .icon, .stats .icon {
+    margin-right: 0.6rem;
+}
+
+.time {
+    background-color: colors.$base;
+    margin: 0.6rem 0 0.6rem 0;
+    padding: 0 1rem;
+    border-radius: 8px;
+    font-family: $mainFont;
+}
+
+.brightness-icon {
+    color: colors.$yellow;
+    font-family: $PhosphorIconsFilled;
+}
+
+.battery-icon {
+    color: colors.$green;
+    font-family: $PhosphorIconsFilled;
+}
+
+.wifi-icon {
+    color: colors.$sapphire;
+}
+
+.time-icon {
+    margin-right: 12px;
+    color: colors.$mauve;
+}
+
+.volume-icon {
+    // font-family: $MaterialIcons;
+    font-family: $PhosphorIconsFilled;
+    color: colors.$red;
+}
+
 .icon-text-group .icon {
     margin-right: 0.4rem;
+}
+
+.date {
+    margin-right: 0.6rem;
+}
+
+.launcher {
+    // background-color: white;
+    border-radius: 8px;
+    padding: 0 1rem;
+    margin: 0.6rem 0;
+}
+
+.launcher-eventbox:hover .launcher {
+    background-color: colors.$base;
+}
+
+.power-button {
+    border-radius: 8px;
+    padding: 0 1rem;
+    margin: 0.6rem 0;
+}
+
+.powermenu-eventbox:hover .power-button {
+    background-color: colors.$base;
+}
+
+.hotbar-eventbox:hover .hotbar {
+    background-color: colors.$mauve;
+    color: black;
+}
+
+.hotbar-eventbox:hover .folder-icon {
+    color: colors.$yellow;
+}
+
+.sidebar {
+    background-color: colors.$crust;
+    border-radius: 8px;
+    border: 3px solid colors.$blue;
 }

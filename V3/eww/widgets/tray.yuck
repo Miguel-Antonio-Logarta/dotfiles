@@ -1,8 +1,0 @@
-; System Tray
-(defwidget tray []
-    (box
-        (label 
-            :text "This is some text")
-        (systray)
-    )
-)

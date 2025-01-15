@@ -1,0 +1,15 @@
+(defvar openLF "~/.config/eww/scripts/lfSFSU.sh")
+(defvar openNautilus "~/.config/eww/scripts/nautilusSFSU.sh")
+
+(defwidget hotbar []
+    (eventbox
+        :tooltip "Open School Folder"
+        :cursor "pointer"
+        :onclick "${openLF}"
+        :onrightclick "${openNautilus}"
+        :class "hotbar-eventbox"
+        (box
+            :class "hotbar"
+            (labeledIcon
+                (icon :text "" :className "folder-icon")
+                "SFSU"))))

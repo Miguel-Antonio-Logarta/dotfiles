@@ -1,0 +1,46 @@
+(deflisten workspaces_script
+    :initial "initial"
+    "~/.config/eww/scripts/workspaces.py")
+
+(defwidget mode_indicator []
+    (box 
+        :class "mode-indicator-container" 
+        (revealer
+            :transition "slideright"
+            :reveal {workspaces_script.mode == 'RESIZE'}
+            :duration "200ms"
+            (box
+                :class "mode-indicator"
+                "RESIZE MODE"))))
+
+(defwidget vertical_splitting_indicator []
+    (box 
+        (revealer
+            :transition "slideright"
+            :reveal {workspaces_script.splitting_mode == 'SPLIT_VERTICAL'}
+            :duration "200ms"
+            (box
+                :class {workspaces_script.mode == 'RESIZE' ? "split-indicator" : "split-indicator-rounded"}
+                ; ""
+                "SPLIT VERTICALLY"))))
+
+(defwidget workspaces []
+    (box 
+        :class "workspaces-container"
+        :space-evenly false
+        (box 
+            :class "workspaces" 
+            :vexpand "true" 
+            :orientation "h" 
+            :space-evenly true 
+            :halign "start" 
+            :spacing 16
+            (for workspace in "${workspaces_script.workspaces}"
+                (eventbox
+                    :cursor "pointer"
+                    (button 
+                        :class "${workspace.class}"
+                        :onclick "${workspace.i3_command}"
+                        "${workspace.workspace_number}"))))
+        (vertical_splitting_indicator)
+        (mode_indicator)))

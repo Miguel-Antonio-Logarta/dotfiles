@@ -1,6 +1,0 @@
-(defwidget battery [low_icon medium_icon high_icon full_icon]
-    (labeledIcon
-        (icon :text "" :className "battery-icon")
-        "${EWW_BATTERY['BAT0']['capacity']}%"
-    )
-)
